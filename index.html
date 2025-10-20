@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Sky - Start Page</title>
+    <link rel="stylesheet" href="css/page1.css">
+</head>
+<body>
+    <div class="night"></div>
+    <div class="light-glow"></div>
+    <div class="stars" id="stars"></div>
+    <div id="clouds"></div>
+
+    <!-- Audio element (hidden) -->
+    <audio id="backgroundMusic" loop>
+        <source src="ERIK x FREAKY x BENNY - 'Yêu Bền Bỉ'  Official MV - ERIK Official.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="start-btn-container">
+        <button class="start-btn" onclick="startJourney()">
+            <svg class="btn-sparkle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M10.5 1.5H8.25V3.75H10.5V1.5ZM1.5 10.5V8.25H3.75V10.5H1.5ZM13.5 1.5H15.75V3.75H13.5V1.5ZM22.5 10.5H20.25V8.25H22.5V10.5Z"></path>
+                <path d="M10.5 13.5H8.25V15.75H10.5V13.5ZM1.5 22.5V20.25H3.75V22.5H1.5ZM13.5 13.5H15.75V15.75H13.5V13.5ZM22.5 22.5H20.25V20.25H22.5V22.5Z"></path>
+            </svg>
+            <span class="btn-text">Bắt Đầu</span>
+        </button>
+    </div>
+
+    <script>
+        // Khởi tạo và quản lý nhạc nền
+        const audio = document.getElementById('backgroundMusic');
+        let isFirstPlay = true; // Theo dõi lần phát đầu tiên
+        
+        // Khôi phục trạng thái nhạc khi trang tải
+        window.addEventListener('load', function() {
+            const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const currentTime = localStorage.getItem('musicTime');
+            const volume = localStorage.getItem('musicVolume');
+            
+            // Đặt âm lượng mặc định nếu chưa có
+            if (!volume) {
+                audio.volume = 0.7;
+                localStorage.setItem('musicVolume', '0.7');
+            } else {
+                audio.volume = parseFloat(volume);
+            }
+            
+            // Khôi phục vị trí phát (chỉ khi đã từng phát trước đó)
+            if (currentTime && isPlaying) {
+                audio.currentTime = parseFloat(currentTime);
+            }
+            
+            // KHÔNG tự động phát nhạc khi trang tải
+            // Chỉ phát khi người dùng click nút "Bắt Đầu"
+            console.log('🎵 Nhạc đã sẵn sàng, chờ người dùng bắt đầu');
+        });
+
+        // Lưu trạng thái khi nhạc phát
+        audio.addEventListener('play', function() {
+            localStorage.setItem('musicPlaying', 'true');
+            console.log('🎵 Nhạc bắt đầu phát');
+        });
+
+        // Lưu trạng thái khi nhạc dừng
+        audio.addEventListener('pause', function() {
+            localStorage.setItem('musicPlaying', 'false');
+            console.log('🎵 Nhạc đã dừng');
+        });
+
+        // Lưu thời gian hiện tại định kỳ
+        setInterval(() => {
+            if (!audio.paused) {
+                localStorage.setItem('musicTime', audio.currentTime);
+            }
+        }, 2000);
+
+        // Lưu âm lượng khi thay đổi
+        audio.addEventListener('volumechange', function() {
+            localStorage.setItem('musicVolume', audio.volume);
+        });
+
+        // Hàm bắt đầu phát nhạc
+        function startMusic() {
+            return new Promise((resolve, reject) => {
+                if (audio.paused) {
+                    // Đặt thời gian bắt đầu từ 0 nếu là lần phát đầu tiên
+                    if (isFirstPlay) {
+                        audio.currentTime = 0;
+                        isFirstPlay = false;
+                    }
+                    
+                    const playPromise = audio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            console.log('🎵 Nhạc "Yêu Bền Bỉ" đang phát...');
+                            resolve();
+                        }).catch(error => {
+                            console.log('❌ Không thể phát nhạc:', error);
+                            reject(error);
+                        });
+                    }
+                } else {
+                    // Nhạc đang phát rồi
+                    resolve();
+                }
+            });
+        }
+
+        // Tạo sao
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 2 + 0.5;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 3;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${left}%`;
+            star.style.top = `${top}%`;
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Tạo mây
+        const cloudsContainer = document.getElementById('clouds');
+        for (let i = 0; i < 5; i++) {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+            
+            const width = Math.random() * 200 + 100;
+            const height = Math.random() * 80 + 40;
+            const top = Math.random() * 50;
+            const opacity = Math.random() * 0.1 + 0.05;
+            const duration = Math.random() * 40 + 40;
+            const delay = Math.random() * 20;
+            
+            cloud.style.width = `${width}px`;
+            cloud.style.height = `${height}px`;
+            cloud.style.top = `${top}%`;
+            cloud.style.opacity = opacity;
+            cloud.style.animationDuration = `${duration}s`;
+            cloud.style.animationDelay = `${delay}s`;
+            
+            cloudsContainer.appendChild(cloud);
+        }
+
+        // Hàm chuyển trang
+        function startJourney() {
+            // Thêm hiệu ứng loading cho button
+            const button = document.querySelector('.start-btn');
+            button.classList.add('loading');
+            button.disabled = true;
+            
+            // Cập nhật text button
+            const btnText = button.querySelector('.btn-text');
+            btnText.textContent = 'Đang khởi động...';
+            
+            // Bắt đầu phát nhạc trước khi chuyển trang
+            startMusic().then(() => {
+                console.log('✅ Nhạc đã bắt đầu phát, chuẩn bị chuyển trang...');
+                
+                // Chuyển trang sau một khoảng thời gian ngắn
+                setTimeout(() => {
+                    window.location.href = 'gift.html';
+                }, 800);
+            }).catch((error) => {
+                console.log('❌ Lỗi khi phát nhạc, vẫn chuyển trang...', error);
+                
+                // Vẫn chuyển trang nếu không phát được nhạc
+                setTimeout(() => {
+                    window.location.href = 'gift.html';
+                }, 500);
+            });
+        }
+
+        // Khởi tạo hệ thống nhạc khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Trang chủ đã sẵn sàng');
+            console.log('🎵 Hệ thống nhạc nền đã được khởi tạo - Chờ người dùng bắt đầu');
+            
+            // Thêm sự kiện để debug
+            audio.addEventListener('canplaythrough', function() {
+                console.log('✅ Nhạc đã tải xong và sẵn sàng phát');
+            });
+            
+            audio.addEventListener('waiting', function() {
+                console.log('⏳ Nhạc đang tải...');
+            });
+        });
+    </script>
+
+    <style>
+        /* Ẩn audio element */
+        #backgroundMusic {
+            display: none;
+        }
+        
+        /* Thêm hiệu ứng loading cho button khi click */
+        .start-btn.loading {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .start-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: loading 1.5s infinite;
+        }
+        
+        .start-btn:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+        
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Hiệu ứng cho button text khi loading */
+        .btn-text {
+            transition: all 0.3s ease;
+        }
+    </style>
+</body>
+</html>

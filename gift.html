@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 20/10</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-color: #000;
+            --primary-pink: #e91e63;
+            --secondary-pink: #f8bbd0;
+            --accent-purple: #9c27b0;
+            --gold: #ffd700;
+            --rose-gold: #b76e79;
+            --deep-red: #c2185b;
+            --soft-pink: #fce4ec;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--dark-color);
+            overflow: hidden;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .night {
+            position: fixed;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            filter: blur(0.1vmin);
+            background-image: 
+                radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), 
+                radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), 
+                repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), 
+                repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), 
+                repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), 
+                linear-gradient(90deg, rgb(255, 255, 250), rgb(240, 240, 240));
+        }
+
+        /* Thêm hiệu ứng sao lấp lánh */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Hiệu ứng mây */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(15px);
+            animation: cloud-drift 60s linear infinite;
+        }
+
+        @keyframes cloud-drift {
+            0% {
+                transform: translateX(-100vw);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* Hiệu ứng ánh sáng nhẹ */
+        .light-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(145, 233, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 250, 0.05) 0%, transparent 50%);
+            animation: glow-pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Gift Card Styles */
+        .gift-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .gift-card {
+            position: relative;
+            width: min(85vw, 450px);
+            height: min(75vh, 600px);
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffd1dc 30%, #ffe4e6 100%);
+            border-radius: 30px;
+            box-shadow: 
+                0 20px 50px rgba(255, 105, 180, 0.3),
+                inset 0 3px 0 rgba(255, 255, 255, 0.8),
+                0 0 0 4px #ff69b4,
+                0 0 0 8px rgba(255, 255, 255, 0.5),
+                0 0 0 12px #ffb6c1,
+                0 0 40px rgba(255, 182, 193, 0.6);
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            overflow: hidden;
+            font-family: 'Times New Roman', Times, serif;
+            transform-origin: center center;
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            border-radius: 30px;
+            pointer-events: none;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-10px) rotate(2deg) scale(1.03);
+            box-shadow: 
+                0 30px 70px rgba(255, 105, 180, 0.4),
+                inset 0 3px 0 rgba(255, 255, 255, 0.9),
+                0 0 0 4px #ff69b4,
+                0 0 0 8px rgba(255, 255, 255, 0.6),
+                0 0 0 12px #ffb6c1,
+                0 0 60px rgba(255, 182, 193, 0.8);
+        }
+
+        .card-front, .card-inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: min(5vw, 40px);
+            text-align: center;
+            border-radius: 30px;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffd1dc 50%, #ffe4e6 100%);
+        }
+
+        .card-inside {
+            background: linear-gradient(135deg, #fffaf0 0%, #fff5f5 50%, #fff0f5 100%);
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(255, 182, 193, 0.1) 23px, rgba(255, 182, 193, 0.1) 24px);
+            justify-content: flex-start;
+            padding-top: min(6vw, 50px);
+        }
+
+        .gift-card.open .card-front {
+            transform: rotateY(-180deg);
+        }
+
+        .gift-card.open .card-inside {
+            transform: rotateY(0deg);
+        }
+
+        /* Heart Animation */
+        .heart {
+            font-size: min(10vw, 6rem);
+            color: #ff1493;
+            margin-bottom: min(3vw, 20px);
+            animation: heartbeat 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(255, 20, 147, 0.4));
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+            }
+            15% { 
+                transform: scale(1.2) rotate(-8deg);
+            }
+            30% { 
+                transform: scale(1.15) rotate(8deg);
+            }
+            45% { 
+                transform: scale(1.25) rotate(-4deg);
+            }
+            60% { 
+                transform: scale(1.2) rotate(4deg);
+            }
+            75% { 
+                transform: scale(1.15) rotate(-2deg);
+            }
+        }
+
+        /* Typography */
+        .gift-title {
+            font-size: min(7vw, 3rem);
+            color: #ff1493;
+            margin-bottom: min(2vw, 15px);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gift-subtitle {
+            font-size: min(4.5vw, 1.5rem);
+            color: #ff69b4;
+            margin-bottom: min(3vw, 20px);
+            font-weight: 600;
+            font-style: italic;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* Hiệu ứng cho instruction */
+        .instruction {
+            font-size: min(4vw, 1.3rem);
+            color: #ff85a2;
+            margin-top: min(4vw, 25px);
+            font-style: italic;
+            animation: bounce 2s infinite;
+            font-family: 'Times New Roman', Times, serif;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .instruction::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            animation: sparkleJump 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes sparkleJump {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(180deg);
+            }
+        }
+
+        /* Letter Content */
+        .letter-content {
+            font-size: min(4vw, 1.3rem);
+            line-height: 1.7;
+            color: #8b5a7c;
+            text-align: left;
+            font-family: 'Times New Roman', Times, serif;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        .typing-text {
+            opacity: 0;
+            animation: typewriter 0.7s ease forwards;
+            margin-bottom: min(2vw, 12px);
+            position: relative;
+        }
+
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ff69b4;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes typewriter {
+            from { 
+                opacity: 0; 
+                transform: translateX(-15px) translateY(5px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Auto Transition Message */
+        .auto-transition {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 182, 193, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: min(4vw, 1.2rem);
+            z-index: 1000;
+            animation: slideUp 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Thêm biểu tượng ✨ vào thông báo */
+        .auto-transition::before {
+            content: '✨ ';
+        }
+
+        .auto-transition::after {
+            content: ' ✨';
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Scrollbar Styling */
+        .card-inside::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .card-inside::-webkit-scrollbar-track {
+            background: rgba(255, 182, 193, 0.2);
+            border-radius: 4px;
+        }
+
+        .card-inside::-webkit-scrollbar-thumb {
+            background: #ffb6c1;
+            border-radius: 4px;
+        }
+
+        .card-inside::-webkit-scrollbar-thumb:hover {
+            background: #ff69b4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gift-card {
+                width: 90vw;
+                height: 80vh;
+            }
+            
+            .card-front, .card-inside {
+                padding: 30px 25px;
+            }
+            
+            .letter-content {
+                font-size: 1.2rem;
+            }
+
+            .instruction {
+                padding-left: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gift-card {
+                width: 95vw;
+                height: 85vh;
+            }
+            
+            .card-front, .card-inside {
+                padding: 25px 20px;
+            }
+            
+            .letter-content {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+            
+            .gift-title {
+                font-size: 2.5rem;
+            }
+            
+            .gift-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .instruction {
+                padding-left: 20px;
+            }
+        }
+
+        /* Confetti animation */
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HIỆU ỨNG CUTE MỚI ===== */
+        
+        /* Hiệu ứng bong bóng bay */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hiệu ứng border gradient animation */
+        .gift-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #ff69b4, #ff1493);
+            border-radius: 32px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 400% 400%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gift-card:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hiệu ứng background pattern cute */
+        .card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Hiệu ứng cute cho title */
+        .gift-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gift-title::after {
+            content: '🌸';
+            position: absolute;
+            top: -15px;
+            right: -25px;
+            font-size: 1.5rem;
+            animation: flowerSpin 4s linear infinite;
+        }
+
+        @keyframes flowerSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hiệu ứng cute cho subtitle */
+        .gift-subtitle {
+            position: relative;
+        }
+
+        .gift-subtitle::before,
+        .gift-subtitle::after {
+            content: '💝';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        .gift-subtitle::before {
+            left: -30px;
+        }
+
+        .gift-subtitle::after {
+            right: -30px;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                transform: translateY(-50%) scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio element (hidden) -->
+    <audio id="backgroundMusic" loop>
+        <source src="ERIK x FREAKY x BENNY - 'Yêu Bền Bỉ'  Official MV - ERIK Official.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="night"></div>
+    <div class="light-glow"></div>
+    <div class="stars" id="stars"></div>
+    <div id="clouds"></div>
+
+    <!-- Floating hearts container -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="gift-container">
+        <div class="gift-card" id="giftCard">
+            <div class="card-front">
+                <div class="heart">💖</div>
+                <h1 class="gift-title">Chúc Mừng 20/10</h1>
+                <p class="gift-subtitle">Ngày Phụ Nữ Việt Nam</p>
+                <p class="instruction">Nhấn vào thiệp để mở</p>
+            </div>
+            <div class="card-inside">
+                <div class="letter-content" id="letterContent">
+                    <!-- Nội dung thư sẽ được thêm bằng JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== HỆ THỐNG NHẠC NỀN =====
+        const audio = document.getElementById('backgroundMusic');
+        
+        // Khôi phục trạng thái nhạc khi trang tải
+        window.addEventListener('load', function() {
+            const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const currentTime = localStorage.getItem('musicTime');
+            const volume = localStorage.getItem('musicVolume');
+            
+            // Đặt âm lượng mặc định nếu chưa có
+            if (!volume) {
+                audio.volume = 0.7;
+                localStorage.setItem('musicVolume', '0.7');
+            } else {
+                audio.volume = parseFloat(volume);
+            }
+            
+            // Khôi phục vị trí phát
+            if (currentTime) {
+                audio.currentTime = parseFloat(currentTime);
+            }
+            
+            // Tự động phát nhạc nếu đang trong trạng thái phát
+            if (isPlaying) {
+                audio.play().catch(e => {
+                    console.log('Tự động phát bị chặn, nhạc sẽ phát khi có tương tác người dùng');
+                });
+            }
+            
+            console.log('🎵 Hệ thống nhạc đã khởi tạo - Trạng thái:', isPlaying ? 'Đang phát' : 'Đang dừng');
+        });
+
+        // Lưu trạng thái khi nhạc phát
+        audio.addEventListener('play', function() {
+            localStorage.setItem('musicPlaying', 'true');
+        });
+
+        // Lưu trạng thái khi nhạc dừng
+        audio.addEventListener('pause', function() {
+            localStorage.setItem('musicPlaying', 'false');
+        });
+
+        // Lưu thời gian hiện tại định kỳ
+        setInterval(() => {
+            if (!audio.paused) {
+                localStorage.setItem('musicTime', audio.currentTime);
+            }
+        }, 2000);
+
+        // Lưu âm lượng khi thay đổi
+        audio.addEventListener('volumechange', function() {
+            localStorage.setItem('musicVolume', audio.volume);
+        });
+
+        // ===== HIỆU ỨNG CUTE MỚI =====
+        
+        // Tạo trái tim bay
+        function createFloatingHearts() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const heartEmojis = ['💖', '💗', '💓', '💘', '💝', '💞', '💕', '🌸', '🌺', '🌷'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                
+                // Random position and animation
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // ===== PHẦN CODE GỐC CỦA TRANG =====
+        // Hàm kiểm tra thiết bị
+        function checkDeviceType() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isMobile = /mobile|android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+            const isTablet = /tablet|ipad|playbook|silk/i.test(userAgent);
+            
+            return {
+                isMobile: isMobile && !isTablet,
+                isTablet: isTablet,
+                isDesktop: !isMobile && !isTablet
+            };
+        }
+
+        // Hàm tính toán scale cho thiết bị di động
+        function calculateMobileScale() {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Tính scale dựa trên kích thước màn hình
+            const baseWidth = 400;  // Kích thước base cho mobile
+            const baseHeight = 600; // Kích thước base cho mobile
+            
+            const widthScale = viewportWidth / baseWidth;
+            const heightScale = viewportHeight / baseHeight;
+            
+            // Lấy scale nhỏ hơn để đảm bảo vừa màn hình
+            let scale = Math.min(widthScale, heightScale);
+            
+            // Giới hạn scale trong khoảng 0.7 đến 0.95
+            scale = Math.max(0.7, Math.min(0.95, scale));
+            
+            return scale;
+        }
+
+        // Hàm tính toán scale cho tablet
+        function calculateTabletScale() {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            const baseWidth = 500;
+            const baseHeight = 700;
+            
+            const widthScale = viewportWidth / baseWidth;
+            const heightScale = viewportHeight / baseHeight;
+            
+            let scale = Math.min(widthScale, heightScale);
+            scale = Math.max(0.8, Math.min(1.0, scale));
+            
+            return scale;
+        }
+
+        // Hàm điều chỉnh kích thước thiệp
+        function adjustCardSize() {
+            const card = document.getElementById('giftCard');
+            const deviceType = checkDeviceType();
+            
+            let scale = 1;
+            let additionalScale = 1;
+            
+            if (deviceType.isMobile) {
+                scale = calculateMobileScale();
+                console.log('Thiết bị di động - Scale:', scale);
+            } else if (deviceType.isTablet) {
+                scale = calculateTabletScale();
+                console.log('Tablet - Scale:', scale);
+            } else {
+                console.log('Máy tính - Giữ nguyên kích thước');
+                // Máy tính giữ nguyên kích thước
+                card.style.transform = 'none';
+                return;
+            }
+            
+            // Điều chỉnh thêm cho màn hình rất nhỏ
+            if (window.innerWidth < 400) {
+                additionalScale = 0.9;
+            }
+            
+            const finalScale = scale * additionalScale;
+            card.style.transform = `scale(${finalScale})`;
+            
+            console.log('Final scale:', finalScale, 'Window size:', window.innerWidth, 'x', window.innerHeight);
+        }
+
+        // Tạo sao
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 2 + 0.5;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 3;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${left}%`;
+            star.style.top = `${top}%`;
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Tạo mây
+        const cloudsContainer = document.getElementById('clouds');
+        for (let i = 0; i < 5; i++) {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+            
+            const width = Math.random() * 200 + 100;
+            const height = Math.random() * 80 + 40;
+            const top = Math.random() * 50;
+            const opacity = Math.random() * 0.1 + 0.05;
+            const duration = Math.random() * 40 + 40;
+            const delay = Math.random() * 20;
+            
+            cloud.style.width = `${width}px`;
+            cloud.style.height = `${height}px`;
+            cloud.style.top = `${top}%`;
+            cloud.style.opacity = opacity;
+            cloud.style.animationDuration = `${duration}s`;
+            cloud.style.animationDelay = `${delay}s`;
+            
+            cloudsContainer.appendChild(cloud);
+        }
+
+        // Nội dung thư
+        const letterContent = [
+            "Gửi cô và tất cả bông hoa xinh đẹp",
+            "nhất 9a7",
+            "",
+            "Nhân ngày Phụ Nữ Việt Nam 20/10",
+            "Xin gửi đến bạn những lời chúc tốt",
+            "đẹp và ngọt ngào nhất!",
+            "",
+            "Chúc bạn và cô luôn:",
+            " Xinh đẹp rạng ngời",
+            " Hạnh phúc ngập tràn", 
+            " Thành công rực rỡ",
+            " Luôn tỏa sáng lung linh!",
+            "Cảm ơn bạn vì tất cả những điều tuyệt ",
+            "vời mà bạn mang đến cho thế giới này!",
+            "Bạn xứng đáng nhận được mọi điều",
+            "hạnh phúc nhất!",
+        ];
+
+        // Biến theo dõi
+        const giftCard = document.getElementById('giftCard');
+        const letterContainer = document.getElementById('letterContent');
+        const cardInside = document.querySelector('.card-inside');
+        let isCardOpen = false;
+        let isTypingComplete = false;
+
+        // Mở thiệp
+        giftCard.addEventListener('click', function() {
+            if (!isCardOpen) {
+                this.classList.add('open');
+                isCardOpen = true;
+                
+                // Đảm bảo nhạc đang phát khi mở thiệp
+                if (audio.paused) {
+                    audio.play().catch(e => {
+                        console.log('Không thể phát nhạc:', e);
+                    });
+                }
+                
+                setTimeout(typeLetter, 800);
+            }
+        });
+
+        // Hiệu ứng gõ chữ với tự động cuộn
+        function typeLetter() {
+            letterContainer.innerHTML = '';
+            let lineIndex = 0;
+            let charIndex = 0;
+            const totalLines = letterContent.length;
+            
+            function typeLine() {
+                if (lineIndex < totalLines) {
+                    const line = letterContent[lineIndex];
+                    
+                    if (line === '') {
+                        // Thêm dòng trống
+                        const emptyLine = document.createElement('p');
+                        emptyLine.style.marginBottom = '15px';
+                        emptyLine.classList.add('typing-text');
+                        emptyLine.style.opacity = '1';
+                        letterContainer.appendChild(emptyLine);
+                        lineIndex++;
+                        
+                        // Tự động cuộn xuống
+                        setTimeout(() => {
+                            cardInside.scrollTop = cardInside.scrollHeight;
+                        }, 100);
+                        
+                        setTimeout(typeLine, 400);
+                        return;
+                    }
+                    
+                    const lineElement = document.createElement('p');
+                    lineElement.classList.add('typing-text');
+                    letterContainer.appendChild(lineElement);
+                    
+                    function typeChar() {
+                        if (charIndex < line.length) {
+                            lineElement.textContent += line.charAt(charIndex);
+                            charIndex++;
+                            
+                            // Tự động cuộn xuống khi đang gõ
+                            cardInside.scrollTop = cardInside.scrollHeight;
+                            
+                            setTimeout(typeChar, 45);
+                        } else {
+                            charIndex = 0;
+                            lineIndex++;
+                            
+                            // Tự động cuộn xuống sau khi hoàn thành dòng
+                            setTimeout(() => {
+                                cardInside.scrollTop = cardInside.scrollHeight;
+                            }, 100);
+                            
+                            // Kiểm tra nếu đã gõ xong tất cả các dòng
+                            if (lineIndex >= totalLines) {
+                                isTypingComplete = true;
+                                setTimeout(showTransitionMessage, 1000);
+                            }
+                            
+                            setTimeout(typeLine, 600);
+                        }
+                    }
+                    
+                    typeChar();
+                }
+            }
+            
+            typeLine();
+        }
+
+        // Hiển thị thông báo chuyển trang
+        function showTransitionMessage() {
+            
+            // Chuyển trang sau 5 giây
+            setTimeout(() => {
+                window.location.href = 'flower.html';
+            }, 5000);
+            
+            // Đếm ngược
+            let countdown = 4;
+            const countdownInterval = setInterval(() => {
+                if (countdown > 0) {
+                    transitionMsg.textContent = `Chuyển sang trang hoa trong ${countdown} giây...`;
+                    countdown--;
+                } else {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+        }
+
+        // Thêm confetti
+        function createConfetti() {
+            const shapes = ['❀', '✿', '❁', '🌸', '🌺', '🌷', '💮', '🏵️', '💖', '💗', '💓'];
+            const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#ffb6c1', '#ffc0cb'];
+            
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                confetti.style.position = 'fixed';
+                confetti.style.fontSize = Math.random() * 20 + 15 + 'px';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-30px';
+                confetti.style.opacity = '0';
+                confetti.style.zIndex = '9999';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.animation = `confettiFall ${Math.random() * 4 + 3}s ease-in forwards`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 6000);
+            }
+        }
+
+        // Kích hoạt confetti khi mở thiệp
+        giftCard.addEventListener('click', function() {
+            if (!isCardOpen) {
+                setTimeout(createConfetti, 300);
+            }
+        });
+
+        // Gọi hàm điều chỉnh kích thước khi load và resize
+        window.addEventListener('load', function() {
+            adjustCardSize();
+            createFloatingHearts(); // Tạo hiệu ứng trái tim bay
+            
+            // Hiển thị thông tin thiết bị trong console
+            const deviceType = checkDeviceType();
+            console.log('Thông tin thiết bị:', deviceType);
+            console.log('Kích thước màn hình:', window.innerWidth, 'x', window.innerHeight);
+        });
+
+        window.addEventListener('resize', function() {
+            adjustCardSize();
+        });
+
+        // Thêm sự kiện orientation change cho mobile
+        window.addEventListener('orientationchange', function() {
+            setTimeout(adjustCardSize, 100);
+        });
+    </script>
+
+    <style>
+        /* Ẩn audio element */
+        #backgroundMusic {
+            display: none;
+        }
+    </style>
+</body>
+</html>
